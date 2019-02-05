@@ -1,0 +1,20 @@
+body {    
+    max-width: 980px;
+    margin: auto;
+    border: 1px solid #dddddd;
+    background-size: contain;
+    font-family: 'Times New Roman', Times, serif;
+}
+.your-charecter1,
+.your-charecter2,
+.your-charecter3,
+.your-charecter4 {
+    background-color: yellow;
+    padding: 20px 20px;
+    height: 100px;
+    width: 100px;
+    float: left;
+}
+p {
+    clear: both;
+}
