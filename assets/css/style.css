@@ -5,6 +5,23 @@ body {
     background-size: contain;
     font-family: 'Times New Roman', Times, serif;
 }
+
+.your-charecter{    
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.ycharbox  {
+    background-color: yellow;
+    border: 2px solid black;
+    height: 200px;
+    width: 200px;
+}
+img {
+    height: 160px;
+    width: 180px;
+}
+/*
 .your-charecter1,
 .your-charecter2,
 .your-charecter3,
@@ -32,3 +49,5 @@ img {
     height: 100px;
     width: 100px;
 }
+
+*/
