@@ -10,11 +10,25 @@ body {
 .your-charecter3,
 .your-charecter4 {
     background-color: yellow;
-    padding: 20px 20px;
+    border: 2px solid black;  
+    padding: 0;
+    height: 100px;
+    width: 100px;
+    float: left;
+}
+.enemy-fighter1,
+.enemy-fighter2,
+.enemy-fighter3 {  
+    border: 2px solid black;  
+    padding: 0;
     height: 100px;
     width: 100px;
     float: left;
 }
 p {
     clear: both;
+}
+img {
+    height: 100px;
+    width: 100px;
 }
