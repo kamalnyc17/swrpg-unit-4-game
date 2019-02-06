@@ -1,6 +1,7 @@
 
     var myOperator;
     var myCharDelete;
+    var firstTime = true;
 
     // function to initialize screen
     var initialScreen = function() {
@@ -10,19 +11,20 @@
     }
 
     // function to reset the game
-    var resetGame = function() {  
-        initialScreen(); 
+    var resetGame = function() { 
+        location.reload(true);
+        initialScreen();  
 
         $(myCharDelete).remove();
         var valArray = [100, 120, 170, 150];
 
-        for (var i=1; i<5; i++){
-            var myCounter   = (i).toString().trim();
+        for (var j=1; j<5; j++){
+            var myCounter   = (j).toString().trim();
             myContainer = ".your-charecter" + myCounter;  
             $(".your-charecter").append("<div class='allbox ycharbox your-charecter" + myCounter + "' value='" + myCounter + "1'>");
             $(myContainer).append("<h1 id='char" + myCounter + "'>Obi-Wan Kenobi</h1>");
             $(myContainer).append("<img src='assets/images/star " + myCounter + ".jpg'>");
-            $(myContainer).append("<h1 id='point" + myCounter + "' value='" + valArray[i-1] + "'>" + valArray[i-1] + "</h1>");
+            $(myContainer).append("<h1 id='point" + myCounter + "' value='" + valArray[j-1] + "'>" + valArray[j-1] + "</h1>");
         }    
         
         pickSelf();
@@ -42,16 +44,16 @@
                     var myChar  = ".your-charecter" + myCounter + ">#char" + myCounter;
                     var myEnemy = ".enemy-fighter" + enemyCnt;
                     var myImage = ".your-charecter" + myCounter + ">img";
-                    var enemyImg= ".enemy-fighter" + enemyCnt;
                     var myPoint = ".your-charecter" + myCounter + ">#point" + myCounter;
-                    var enemyPnt= ".enemy-fighter" + enemyCnt;
                     var myChar1 = ".your-charecter" + myCounter;                    
                     
                     $(myChar).appendTo( $(myEnemy) );
-                    $(myImage).appendTo( $(enemyImg) );
-                    $(myPoint).appendTo( $(enemyPnt) );
+                    $(myImage).appendTo( $(myEnemy) );
+                    $(myPoint).appendTo( $(myEnemy) );
                     $(myChar1).remove();
 
+                    $('#char'+myCounter).attr( 'id' , 'char'+enemyCnt );
+                    $('#point'+myCounter).attr( 'id' , 'point'+enemyCnt );
                     Counter1++;
                 } else {
                     var myCounter   = (i).toString().trim();
@@ -64,27 +66,24 @@
     
     // function to select an enemy / defendar
     var pickEnemy = function() {
-        $(".enemybox").on("click", function() {    
+        $(".enemybox").on("click", function() {              
+        if (firstTime){
+            firstTime = false;  
             $(".btn").show();
-            $(".defender").show();         
-            myOperator  = parseInt(($(this).attr("value")));
-            var Counter1 = 1;
-            var myCounter   = (myOperator).toString().trim();
-            var enemyCnt    = (Counter1).toString().trim();
+            $(".defender").show();  
+            var myCounter;
+            myOperator  = parseInt(($(this).attr("value"))); 
+            myCounter   = (myOperator).toString().trim();
             var myChar  = ".enemy-fighter" + myCounter + ">#char" + myCounter;
-            var myEnemy = ".current-fighter" + enemyCnt;
             var myImage = ".enemy-fighter" + myCounter + ">img";
-            var enemyImg= ".current-fighter" + enemyCnt;
             var myPoint = ".enemy-fighter" + myCounter + ">#point" + myCounter;
-            var enemyPnt= ".current-fighter" + enemyCnt;
             var myChar1 = ".enemy-fighter" + myCounter;                    
                     
-            $(myChar).appendTo( $(myEnemy) );
-            $(myImage).appendTo( $(enemyImg) );
-            $(myPoint).appendTo( $(enemyPnt) );
+            $(myChar).appendTo( $(".current-fighter1") );
+            $(myImage).appendTo( $(".current-fighter1") );
+            $(myPoint).appendTo( $(".current-fighter1") );
             $(myChar1).remove();
-
-            Counter1++;
+        }
         });
     }    
 
