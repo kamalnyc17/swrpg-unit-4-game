@@ -6,8 +6,15 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 .container{
-    background-color: aqua;
+    background-image: url("../images/background 1.jpg");    
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    min-height: 100vh; 
 }
+.game-heading,
 .your-charecter,
 .enemy-fighter,
 .defender {    
@@ -15,55 +22,30 @@ body {
     flex-wrap: wrap;
     text-align: center;
 }
+.allbox {
+    border: 2px solid black;
+    height: 100px;
+    width: 140px;
+}
 .ycharbox  {
     background-color: yellow;
-    border: 2px solid black;
-    height: 200px;
-    width: 200px;
 }
 .enemybox {
     background-color: red;
-    border: 2px solid black;
-    height: 200px;
-    width: 200px;
 }
-.defender{
+.fighterbox{
     background-color: green;
-    border: 2px solid black;
-    height: 200px;
-    width: 200px;
 }
 img {
-    height: 160px;
-    width: 180px;
-}
-/*
-.your-charecter1,
-.your-charecter2,
-.your-charecter3,
-.your-charecter4 {
-    background-color: yellow;
-    border: 2px solid black;  
-    padding: 0;
-    height: 100px;
+    height: 60px;
     width: 100px;
-    float: left;
-}
-.enemy-fighter1,
-.enemy-fighter2,
-.enemy-fighter3 {  
-    border: 2px solid black;  
-    padding: 0;
-    height: 100px;
-    width: 100px;
-    float: left;
 }
 p {
-    clear: both;
+    color: white;
+    font-weight: 600;
+    line-height: 24px;
 }
-img {
-    height: 100px;
-    width: 100px;
+.topheading {
+    font-size: 34px;
+    line-height: 54px;
 }
-
-*/
