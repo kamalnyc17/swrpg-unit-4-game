@@ -67,7 +67,7 @@
     // function to select an enemy / defendar
     var pickEnemy = function() {
         $(".enemybox").on("click", function() {              
-        if (firstTime){
+        if (firstTime){ //user can't select multiple enemy at the same time
             firstTime = false;  
             $(".btn").show();
             $(".defender").show();  

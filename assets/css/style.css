@@ -1,3 +1,4 @@
+/* top level style */
 body {    
     max-width: 980px;
     margin: auto;
@@ -15,6 +16,7 @@ body {
     
     min-height: 100vh; 
 }
+/* style for flex containers */
 .game-heading,
 .your-charecter,
 .enemy-fighter,
@@ -35,8 +37,9 @@ body {
     background-color: red;
 }
 .fighterbox{
-    background-color: green;
+    background-color: rgb(84, 247, 84);
 }
+/* misc styling for image, buttons etc */
 img {
     height: 60px;
     width: 100px;
