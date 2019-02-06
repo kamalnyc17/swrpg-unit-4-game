@@ -9,7 +9,8 @@ body {
     background-color: aqua;
 }
 .your-charecter,
-.enemy-fighter {    
+.enemy-fighter,
+.defender {    
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -22,6 +23,12 @@ body {
 }
 .enemybox {
     background-color: red;
+    border: 2px solid black;
+    height: 200px;
+    width: 200px;
+}
+.defender{
+    background-color: green;
     border: 2px solid black;
     height: 200px;
     width: 200px;

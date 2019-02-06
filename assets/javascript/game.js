@@ -1,5 +1,18 @@
-$(document).ready( function() {
+
     var myOperator;
+
+    var firstClick = function() {
+        $(".ycharbox").on("click", function() {             
+            myOperator = parseInt(($(this).attr("value")));
+
+            var strChar1 = 
+        });
+
+    }
+
+
+
+$(document).ready( function() {
     $(".ycharbox").on("click", function() { 
         
         myOperator = parseInt(($(this).attr("value")));
