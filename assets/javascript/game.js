@@ -95,6 +95,9 @@
         $(".restart").on("click", function() {
             resetGame();
         });
+        $(".attack").on("click", function(){
+            alert( "Working on it");
+        });
     });
 
     
