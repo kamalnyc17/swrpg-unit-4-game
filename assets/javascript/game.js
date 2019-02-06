@@ -1,8 +1,37 @@
 
     var myOperator;
 
-    var firstClick = function() {
+    var pickSelf = function() {
         $(".ycharbox").on("click", function() {             
+            myOperator  = parseInt(($(this).attr("value")));
+            var Counter1 = 1;
+            for (i=1; i<5; i++){
+
+                if (i !== myOperator){
+                    var myCounter   = (i).toString().trim();
+                    var enemyCnt    = (Counter1).toString().trim();
+                    var myChar  = ".your-charecter" + myCounter + ">#char" + myCounter;
+                    var myEnemy = ".enemy-fighter" + enemyCnt;
+                    var myImage = ".your-charecter" + myCounter + ">img";
+                    var enemyImg= ".enemy-fighter" + enemyCnt;
+                    var myPoint = ".your-charecter" + myCounter + ">#point" + myCounter;
+                    var enemyPnt= ".enemy-fighter" + enemyCnt;
+                    var myChar1 = ".your-charecter" + myCounter;                    
+                    
+                    $(myChar).appendTo( $(myEnemy) );
+                    $(myImage).appendTo( $(enemyImg) );
+                    $(myPoint).appendTo( $(enemyPnt) );
+                    $(myChar1).remove();
+
+                    Counter1++;
+                }
+            }
+
+        });
+    }    
+
+    var pickEnemy = function() {
+        $(".enemybox").on("click", function() {             
             myOperator  = parseInt(($(this).attr("value")));
             var Counter1 = 1;
             for (i=1; i<5; i++){
@@ -33,9 +62,10 @@
 
         });
     }    
-
+    // process starts here
     $(document).ready( function() {
-        firstClick();
+        pickSelf();
+        pickEnemy();
     });
 
 
