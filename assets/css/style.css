@@ -11,6 +11,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-left: 10px;
     
     min-height: 100vh; 
 }
@@ -48,4 +49,16 @@ p {
 .topheading {
     font-size: 34px;
     line-height: 54px;
+}
+.btn {
+    border-radius: 25px;
+    background-color: bisque;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+}
+.btn:hover {
+    background-color: white;
+    font-weight: 600;
 }
