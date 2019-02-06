@@ -5,14 +5,23 @@ body {
     background-size: contain;
     font-family: 'Times New Roman', Times, serif;
 }
-
-.your-charecter{    
+.container{
+    background-color: aqua;
+}
+.your-charecter,
+.enemy-fighter {    
     display: flex;
     flex-wrap: wrap;
     text-align: center;
 }
 .ycharbox  {
     background-color: yellow;
+    border: 2px solid black;
+    height: 200px;
+    width: 200px;
+}
+.enemybox {
+    background-color: red;
     border: 2px solid black;
     height: 200px;
     width: 200px;
