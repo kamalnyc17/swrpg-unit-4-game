@@ -1,9 +1,29 @@
 
     var myOperator;
+    var myCharDelete;
 
+    // function to initialize screen
+    var initialScreen = function() {
+        $(".enemy-fighter").hide();
+        $(".btn").hide();
+        $(".defender").hide();
+    }
+
+    // function to reset the game
+    var resetGame = function() {  
+        initialScreen(); 
+        $(myCharDelete).remove();
+        myContainer = ".your-charecter1";        
+        $(".your-charecter").append("<div class='allbox ycharbox your-charecter1' value='1'>");
+        $(".your-charecter1").append("<h1 id='char1'>Obi-Wan Kenobi</h1>");
+        $(".your-charecter1").append("<img src='assets/images/star 1.jpg'>");
+        $(".your-charecter1").append("<h1 id='point1' value='200'>200</h1>");
+    }
+    
     // function to select the star wars hero I want to play
     var pickSelf = function() {
-        $(".ycharbox").on("click", function() {             
+        $(".ycharbox").on("click", function() {  
+            $(".enemy-fighter").show();           
             myOperator  = parseInt(($(this).attr("value")));
             var Counter1 = 1;
             for (i=1; i<5; i++){
@@ -25,6 +45,9 @@
                     $(myChar1).remove();
 
                     Counter1++;
+                } else {
+                    var myCounter   = (i).toString().trim();
+                    myCharDelete = ".your-charecter" + myCounter; 
                 }
             }
 
@@ -33,7 +56,9 @@
     
     // function to select an enemy / defendar
     var pickEnemy = function() {
-        $(".enemybox").on("click", function() {             
+        $(".enemybox").on("click", function() {    
+            $(".btn").show();
+            $(".defender").show();         
             myOperator  = parseInt(($(this).attr("value")));
             var Counter1 = 1;
             var myCounter   = (myOperator).toString().trim();
@@ -57,46 +82,17 @@
 
     // process starts here
     $(document).ready( function() {
+        initialScreen();
         pickSelf();
         pickEnemy();
+        $(".restart").on("click", function() {
+            resetGame();
+        });
     });
 
 
-/*
-$(document).ready( function() {
-    $(".ycharbox").on("click", function() { 
-        
-        myOperator = parseInt(($(this).attr("value")));
-        console.log(myOperator);
-        if (myOperator===1) {
-            var testStr = '.your-charecter' +'1>#char1';
-            $(testStr).appendTo( $('.enemy-fighter1') );
-            $('.your-charecter1>img').appendTo( $('.enemy-fighter1') );
-            $('.your-charecter1>#point1').appendTo( $('.enemy-fighter1') );
-            $(".your-charecter1").remove();
-        }
-        if (myOperator===2){
-            $('.your-charecter2>#char2').appendTo( $('.enemy-fighter2') );
-            $('.your-charecter2>img').appendTo( $('.enemy-fighter2') );
-            $('.your-charecter2>#point2').appendTo( $('.enemy-fighter2') );
-            $(".your-charecter2").remove();
-        }
-        if (myOperator===3){
-            $('.your-charecter3>#char3').appendTo( $('.enemy-fighter3') );
-            $('.your-charecter3>img').appendTo( $('.enemy-fighter3') );
-            $('.your-charecter3>#point3').appendTo( $('.enemy-fighter3') );
-            $(".your-charecter3").remove();
-        }      
-        if (myOperator===4){
-            $('.your-charecter>#char4').appendTo( $('.enemy-fighter3') );
-            $('.your-charecter4>img').appendTo( $('.enemy-fighter3') );
-            $('.your-charecter4>#point4').appendTo( $('.enemy-fighter3') );
-            $(".your-charecter4").remove();
-        }
-    });
-})
 
-            //$(".your-charecter4").hide();
+            //
             //$(".enemy-fighter1").css({"background-color": "red", "padding": "20px 20px", "height": "100px", "width": "100px", "float": "left"});
-*/            
+            
 
