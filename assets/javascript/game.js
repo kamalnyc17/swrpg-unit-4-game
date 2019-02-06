@@ -1,6 +1,7 @@
 
     var myOperator;
     var myCharDelete;
+    var myCharName;
     var firstTime = true;
 
     // function to initialize screen
@@ -13,7 +14,6 @@
     // function to reset the game
     var resetGame = function() { 
         location.reload(true);
-        initialScreen();  
 
         $(myCharDelete).remove();
         var valArray = [100, 120, 170, 150];
@@ -57,7 +57,7 @@
                     Counter1++;
                 } else {
                     var myCounter   = (i).toString().trim();
-                    myCharDelete = ".your-charecter" + myCounter; 
+                    myCharDelete    = ".your-charecter" + myCounter; 
                 }
             }
 
@@ -77,11 +77,12 @@
             var myChar  = ".enemy-fighter" + myCounter + ">#char" + myCounter;
             var myImage = ".enemy-fighter" + myCounter + ">img";
             var myPoint = ".enemy-fighter" + myCounter + ">#point" + myCounter;
-            var myChar1 = ".enemy-fighter" + myCounter;                    
-                    
+            var myChar1 = ".enemy-fighter" + myCounter;    
+                     
+            myCharName  = $(myChar).text().toUpperCase(); //storning the name of the defendar in global variable
             $(myChar).appendTo( $(".current-fighter1") );
             $(myImage).appendTo( $(".current-fighter1") );
-            $(myPoint).appendTo( $(".current-fighter1") );
+            $(myPoint).appendTo( $(".current-fighter1") );   
             $(myChar1).remove();
         }
         });
@@ -95,8 +96,10 @@
         $(".restart").on("click", function() {
             resetGame();
         });
-        $(".attack").on("click", function(){
-            alert( "Working on it");
+        $(".attack").on("click", function(){            
+            $("#myscore").text("You attacked " + myCharName + " for <xx> damage.");
+            $("#enemyscore").text(myCharName + " attacked you back for <xx> damage.");
+            $("#result").text("You are a winner/defeated .... GAME OVER!");
         });
     });
 

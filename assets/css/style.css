@@ -7,13 +7,14 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 .container{
-    background-image: url("../images/background 1.jpg");    
-    height: 100%; 
+    background-image: url("../images/background 1.jpg");  
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     padding-left: 10px;
-    
+    padding-right: 10px;
+      
+    height: 100%; 
     min-height: 100vh; 
 }
 /* style for flex containers */
@@ -38,6 +39,7 @@ body {
 }
 .fighterbox{
     background-color: rgb(84, 247, 84);
+    margin-bottom: 10px;
 }
 /* misc styling for image, buttons etc */
 img {
@@ -47,7 +49,14 @@ img {
 p {
     color: white;
     font-weight: 600;
-    line-height: 24px;
+    line-height: 36px;
+    font-size: 24px;
+}
+.footnote{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
 }
 .topheading {
     font-size: 34px;
@@ -59,9 +68,20 @@ p {
     color: black;
     cursor: pointer;
     font-size: 16px;
-    padding: 10px;
+    padding: 5px 30px;
 }
 .btn:hover {
     background-color: white;
     font-weight: 600;
+}
+.attack {
+    margin-top: 5px;
+}
+.restart {
+    margin-bottom: 5px;
+}
+section {
+    border: 5px solid white;
+    padding-left: 5px;
+    max-width: 50%;
 }
