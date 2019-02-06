@@ -12,21 +12,29 @@
     // function to reset the game
     var resetGame = function() {  
         initialScreen(); 
+
         $(myCharDelete).remove();
-        myContainer = ".your-charecter1";        
-        $(".your-charecter").append("<div class='allbox ycharbox your-charecter1' value='1'>");
-        $(".your-charecter1").append("<h1 id='char1'>Obi-Wan Kenobi</h1>");
-        $(".your-charecter1").append("<img src='assets/images/star 1.jpg'>");
-        $(".your-charecter1").append("<h1 id='point1' value='200'>200</h1>");
+        var valArray = [100, 120, 170, 150];
+
+        for (var i=1; i<5; i++){
+            var myCounter   = (i).toString().trim();
+            myContainer = ".your-charecter" + myCounter;  
+            $(".your-charecter").append("<div class='allbox ycharbox your-charecter" + myCounter + "' value='" + myCounter + "1'>");
+            $(myContainer).append("<h1 id='char" + myCounter + "'>Obi-Wan Kenobi</h1>");
+            $(myContainer).append("<img src='assets/images/star " + myCounter + ".jpg'>");
+            $(myContainer).append("<h1 id='point" + myCounter + "' value='" + valArray[i-1] + "'>" + valArray[i-1] + "</h1>");
+        }    
+        
+        pickSelf();
     }
-    
+
     // function to select the star wars hero I want to play
     var pickSelf = function() {
         $(".ycharbox").on("click", function() {  
             $(".enemy-fighter").show();           
             myOperator  = parseInt(($(this).attr("value")));
             var Counter1 = 1;
-            for (i=1; i<5; i++){
+            for (var i=1; i<5; i++){
 
                 if (i !== myOperator){
                     var myCounter   = (i).toString().trim();
@@ -90,9 +98,4 @@
         });
     });
 
-
-
-            //
-            //$(".enemy-fighter1").css({"background-color": "red", "padding": "20px 20px", "height": "100px", "width": "100px", "float": "left"});
-            
-
+    
