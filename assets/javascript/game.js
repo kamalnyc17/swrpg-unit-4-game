@@ -1,6 +1,7 @@
 
     var myOperator;
 
+    // function to select the star wars hero I want to play
     var pickSelf = function() {
         $(".ycharbox").on("click", function() {             
             myOperator  = parseInt(($(this).attr("value")));
@@ -29,39 +30,31 @@
 
         });
     }    
-
+    
+    // function to select an enemy / defendar
     var pickEnemy = function() {
         $(".enemybox").on("click", function() {             
             myOperator  = parseInt(($(this).attr("value")));
             var Counter1 = 1;
-            for (i=1; i<5; i++){
-                console.log( myOperator);
-                console.log(i);
-                console.log(Counter1);
-
-                if (i !== myOperator){
-                    console.log("---");
-                    var myCounter   = (i).toString().trim();
-                    var enemyCnt    = (Counter1).toString().trim();
-                    var myChar  = ".your-charecter" + myCounter + ">#char" + myCounter;
-                    var myEnemy = ".enemy-fighter" + enemyCnt;
-                    var myImage = ".your-charecter" + myCounter + ">img";
-                    var enemyImg= ".enemy-fighter" + enemyCnt;
-                    var myPoint = ".your-charecter" + myCounter + ">#point" + myCounter;
-                    var enemyPnt= ".enemy-fighter" + enemyCnt;
-                    var myChar1 = ".your-charecter" + myCounter;                    
+            var myCounter   = (myOperator).toString().trim();
+            var enemyCnt    = (Counter1).toString().trim();
+            var myChar  = ".enemy-fighter" + myCounter + ">#char" + myCounter;
+            var myEnemy = ".current-fighter" + enemyCnt;
+            var myImage = ".enemy-fighter" + myCounter + ">img";
+            var enemyImg= ".current-fighter" + enemyCnt;
+            var myPoint = ".enemy-fighter" + myCounter + ">#point" + myCounter;
+            var enemyPnt= ".current-fighter" + enemyCnt;
+            var myChar1 = ".enemy-fighter" + myCounter;                    
                     
-                    $(myChar).appendTo( $(myEnemy) );
-                    $(myImage).appendTo( $(enemyImg) );
-                    $(myPoint).appendTo( $(enemyPnt) );
-                    $(myChar1).remove();
+            $(myChar).appendTo( $(myEnemy) );
+            $(myImage).appendTo( $(enemyImg) );
+            $(myPoint).appendTo( $(enemyPnt) );
+            $(myChar1).remove();
 
-                    Counter1++;
-                }
-            }
-
+            Counter1++;
         });
     }    
+
     // process starts here
     $(document).ready( function() {
         pickSelf();
