@@ -1,14 +1,15 @@
 
+    // global variables
     var myOperator;
     var myCharDelete;
     var myCharName;
     var firstTime = true;
+    var myHPscore;
+    var enemyHPscore;
 
     // function to initialize screen
     var initialScreen = function() {
-        $(".enemy-fighter").hide();
-        $(".btn").hide();
-        $(".defender").hide();
+        $(".enemy-fighter, .btn, .defender").hide();
     }
 
     // function to reset the game
@@ -34,30 +35,33 @@
     var pickSelf = function() {
         $(".ycharbox").on("click", function() {  
             $(".enemy-fighter").show();           
-            myOperator  = parseInt(($(this).attr("value")));
-            var Counter1 = 1;
+            myOperator      = parseInt(($(this).attr("value")));   
+            var Counter1    = 1;
             for (var i=1; i<5; i++){
 
                 if (i !== myOperator){
                     var myCounter   = (i).toString().trim();
                     var enemyCnt    = (Counter1).toString().trim();
-                    var myChar  = ".your-charecter" + myCounter + ">#char" + myCounter;
-                    var myEnemy = ".enemy-fighter" + enemyCnt;
-                    var myImage = ".your-charecter" + myCounter + ">img";
-                    var myPoint = ".your-charecter" + myCounter + ">#point" + myCounter;
-                    var myChar1 = ".your-charecter" + myCounter;                    
-                    
+                    var myChar      = ".your-charecter" + myCounter + ">#char" + myCounter;
+                    var myEnemy     = ".enemy-fighter" + enemyCnt;
+                    var myImage     = ".your-charecter" + myCounter + ">img";
+                    var myPoint     = ".your-charecter" + myCounter + ">#point" + myCounter;
+                    var myChar1     = ".your-charecter" + myCounter;                       
+                    var tempScore   = parseInt($(myChar1).attr("data-hpscore"));
+
                     $(myChar).appendTo( $(myEnemy) );
                     $(myImage).appendTo( $(myEnemy) );
                     $(myPoint).appendTo( $(myEnemy) );
                     $(myChar1).remove();
+                    $(myEnemy).attr("data-hpscore", tempScore);
 
                     $('#char'+myCounter).attr( 'id' , 'char'+enemyCnt );
                     $('#point'+myCounter).attr( 'id' , 'point'+enemyCnt );
                     Counter1++;
                 } else {
                     var myCounter   = (i).toString().trim();
-                    myCharDelete    = ".your-charecter" + myCounter; 
+                    myCharDelete    = ".your-charecter" + myCounter;
+                    myHPscore       = parseInt($(this).attr("data-hpscore"));
                 }
             }
 
@@ -79,6 +83,7 @@
             var myPoint = ".enemy-fighter" + myCounter + ">#point" + myCounter;
             var myChar1 = ".enemy-fighter" + myCounter;    
                      
+            enemyHPscore = parseInt($(this).attr("data-hpscore"));
             myCharName  = $(myChar).text().toUpperCase(); //storning the name of the defendar in global variable
             $(myChar).appendTo( $(".current-fighter1") );
             $(myImage).appendTo( $(".current-fighter1") );
@@ -97,8 +102,8 @@
             resetGame();
         });
         $(".attack").on("click", function(){            
-            $("#myscore").text("You attacked " + myCharName + " for <xx> damage.");
-            $("#enemyscore").text(myCharName + " attacked you back for <xx> damage.");
+            $("#myscore").text("You attacked " + myCharName + " for " + myHPscore + " damage.");
+            $("#enemyscore").text(myCharName + " attacked you back for " + enemyHPscore + " damage.");
             $("#result").text("You are a winner/defeated .... GAME OVER!");
         });
     });
