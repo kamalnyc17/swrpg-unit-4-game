@@ -7,12 +7,7 @@
     var myHPscore;
     var enemyHPscore;
 
-    // function to initialize screen
-    var initialScreen = function() {
-        $(".enemy-fighter, .btn, .defender").hide();
-    }
-
-    // function to reset the game
+    // function to restart the game
     var resetGame = function() { 
         location.reload(true);
 
@@ -95,7 +90,8 @@
 
     // process starts here
     $(document).ready( function() {
-        initialScreen();
+        $(".enemy-fighter, .btn, .defender").hide(); //hiding other flexboxes & buttons at the start of the game
+
         pickSelf();
         pickEnemy();
         $(".restart").on("click", function() {
