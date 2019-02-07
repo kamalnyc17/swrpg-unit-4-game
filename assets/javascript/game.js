@@ -121,14 +121,19 @@
             $(myChar1).remove();   
             firstTime = true;
             $("#myscore").text("");
-            $("#enemyscore").text("");       
-            $("#result").text("You have defeated " + enemyCharName + ".You can choose to fight another enemy");
+            $("#enemyscore").text(""); 
+            // making sure no more enemy left 
+            if ($(".enemy-fighter").children().length > 0 ) {
+                $("#result").text("You have defeated " + enemyCharName + ".You can choose to fight another enemy");
+            } else {
+                $("#result").text("You Win. GAME OVER! click <Restart> to play again");
+            }
         }
 
         if (myCurHP < 0){
             $("#myscore").text("");
             $("#enemyscore").text(""); 
-            $("#result").text("You lose. GAME OVER! click <Restart> to play again");
+            $("#result").text("You Lose. GAME OVER! click <Restart> to play again");
         }
     }
 
