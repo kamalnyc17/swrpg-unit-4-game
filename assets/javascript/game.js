@@ -1,14 +1,13 @@
-
     // global variables
     var myOperator;
     var myCharDelete;
     var enemyCharName;
     var firstTime = true;
     var veryFirstTime = true;
-    var myHPscore;
-    var enemyHPscore;
-    var myNewHP;
-    var myCurHP;
+    var myAPscore;
+    var enemyAPscore;
+    var myNewAP; 
+    var myCurHP;   
     var enemyCurHP;
     var myCurHPAttr;
     var enemyCurHPAttr;
@@ -21,6 +20,7 @@
         var valArray    = [100, 120, 170, 150];
         var hpArray     = [10, 5, 7, 15];
 
+        // recreate the charecters after each game
         for (var j=1; j<5; j++){
             var myCounter   = (j).toString().trim();
             myContainer = ".your-charecter" + myCounter; 
@@ -63,8 +63,8 @@
                 } else {
                     var myCounter   = (i).toString().trim();
                     myCharDelete    = ".your-charecter" + myCounter;
-                    myHPscore       = parseInt($(this).attr("data-hpscore"));
-                    myNewHP         = parseInt($(this).attr("data-hpscore"));
+                    myAPscore       = parseInt($(this).attr("data-hpscore"));
+                    myNewAP         = parseInt($(this).attr("data-hpscore"));
                     myCurHP         = parseInt($("#point" + myCounter).attr("value"));
                     myCurHPAttr     = $( "#point" + myCounter );
                 }
@@ -94,7 +94,7 @@
             var myPoint = ".enemy-fighter" + myCounter + ">#point" + myCounter;
             var myChar1 = ".enemy-fighter" + myCounter;    
                      
-            enemyHPscore    = parseInt($(this).attr("data-hpscore"));
+            enemyAPscore    = parseInt($(this).attr("data-hpscore"));
             enemyCurHP      = parseInt($(".enemy-fighter" + myCounter + ">#point" + myCounter).attr("value"));
             enemyCurHPAttr  = $(".enemy-fighter" + myCounter + ">#point" + myCounter);
             enemyCharName   = $(myChar).text().toUpperCase(); //storing the name of the defendar in global variable
@@ -108,13 +108,13 @@
 
     // attack fuction starts here
     var gameAttack = function() {  
-        myCurHP     = myCurHP - enemyHPscore;
-        enemyCurHP  = enemyCurHP - myNewHP;      
+        myCurHP     = myCurHP - enemyAPscore;
+        enemyCurHP  = enemyCurHP - myNewAP;      
         $(myCurHPAttr).text(myCurHP);
         $(enemyCurHPAttr).text(enemyCurHP);
-        $("#myscore").text("You attacked " + enemyCharName + " for " + myNewHP + " damage.");
-        $("#enemyscore").text(enemyCharName + " attacked you back for " + enemyHPscore + " damage.");        
-        myNewHP     = myNewHP + myHPscore; // increase my HP after the game iteration
+        $("#myscore").text("You attacked " + enemyCharName + " for " + myNewAP + " damage.");
+        $("#enemyscore").text(enemyCharName + " attacked you back for " + enemyAPscore + " damage.");        
+        myNewAP     = myNewAP + myAPscore; // increase my AP after each attack
 
         if (enemyCurHP < 0){            
             var myChar1 = ".current-fighter1";    
@@ -122,13 +122,13 @@
             firstTime = true;
             $("#myscore").text("");
             $("#enemyscore").text(""); 
+            $(".attack").hide();
             // making sure no more enemy left 
             if ($(".enemy-fighter").children().length > 0 ) {
                 $("#result").text("You have defeated " + enemyCharName + ".You can choose to fight another enemy");
             } else {
                 $("#result").text("You Win. GAME OVER! click <Restart> to play again");
                 $(".restart").show();
-                $(".attack").hide();
             }
         }
 
