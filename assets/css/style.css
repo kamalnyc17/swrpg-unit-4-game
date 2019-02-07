@@ -41,6 +41,7 @@ body {
     background-color: rgb(132, 250, 132);
     margin-bottom: 10px;
 }
+
 /* misc styling for image, buttons etc */
 img {
     height: 60px;
@@ -80,6 +81,8 @@ p {
 .restart {
     margin-bottom: 5px;
 }
+
+/* creating clearly defined fight section */
 section {
     border: 5px solid white;
     padding-left: 5px;
