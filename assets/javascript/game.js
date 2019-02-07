@@ -84,7 +84,7 @@
             }
             firstTime = false;  
             veryFirstTime = false;
-            $("#attack").show();
+            $(".attack").show();
             $(".defender").show();  
             var myCounter;
             myOperator  = parseInt(($(this).attr("value"))); 
@@ -127,7 +127,8 @@
                 $("#result").text("You have defeated " + enemyCharName + ".You can choose to fight another enemy");
             } else {
                 $("#result").text("You Win. GAME OVER! click <Restart> to play again");
-                $("#restart").show();
+                $(".restart").show();
+                $(".attack").hide();
             }
         }
 
@@ -135,7 +136,8 @@
             $("#myscore").text("");
             $("#enemyscore").text(""); 
             $("#result").text("You Lose. GAME OVER! click <Restart> to play again");
-            $("#restart").show();
+            $(".restart").show();
+            $(".attack").hide();
         }
     }
 
