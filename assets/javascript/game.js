@@ -2,22 +2,29 @@
     // global variables
     var myOperator;
     var myCharDelete;
-    var myCharName;
+    var enemyCharName;
     var firstTime = true;
+    var veryFirstTime = true;
     var myHPscore;
     var enemyHPscore;
+    var myNewHP;
+    var myCurHP;
+    var enemyCurHP;
+    var myCurHPAttr;
+    var enemyCurHPAttr;
 
     // function to restart the game
     var resetGame = function() { 
         location.reload(true);
 
         $(myCharDelete).remove();
-        var valArray = [100, 120, 170, 150];
+        var valArray    = [100, 120, 170, 150];
+        var hpArray     = [10, 5, 7, 15];
 
         for (var j=1; j<5; j++){
             var myCounter   = (j).toString().trim();
-            myContainer = ".your-charecter" + myCounter;  
-            $(".your-charecter").append("<div class='allbox ycharbox your-charecter" + myCounter + "' value='" + myCounter + "1'>");
+            myContainer = ".your-charecter" + myCounter; 
+            $(".your-charecter").append("<div class='allbox ycharbox your-charecter" + myCounter + "' value='" + myCounter + "' data-HPscore='" + hpArray[j-1].toString().trim()+  "' >");
             $(myContainer).append("<h1 id='char" + myCounter + "'>Obi-Wan Kenobi</h1>");
             $(myContainer).append("<img src='assets/images/star " + myCounter + ".jpg'>");
             $(myContainer).append("<h1 id='point" + myCounter + "' value='" + valArray[j-1] + "'>" + valArray[j-1] + "</h1>");
@@ -57,6 +64,9 @@
                     var myCounter   = (i).toString().trim();
                     myCharDelete    = ".your-charecter" + myCounter;
                     myHPscore       = parseInt($(this).attr("data-hpscore"));
+                    myNewHP         = parseInt($(this).attr("data-hpscore"));
+                    myCurHP         = parseInt($("#point" + myCounter).attr("value"));
+                    myCurHPAttr     = $( "#point" + myCounter );
                 }
             }
 
@@ -67,7 +77,13 @@
     var pickEnemy = function() {
         $(".enemybox").on("click", function() {              
         if (firstTime){ //user can't select multiple enemy at the same time
+            // recreate the current-fighter1 object
+            if (!veryFirstTime){
+                $(".defender").append("<div class='allbox fighterbox current-fighter1'>");
+                $("#result").text("");
+            }
             firstTime = false;  
+            veryFirstTime = false;
             $(".btn").show();
             $(".defender").show();  
             var myCounter;
@@ -78,8 +94,10 @@
             var myPoint = ".enemy-fighter" + myCounter + ">#point" + myCounter;
             var myChar1 = ".enemy-fighter" + myCounter;    
                      
-            enemyHPscore = parseInt($(this).attr("data-hpscore"));
-            myCharName  = $(myChar).text().toUpperCase(); //storning the name of the defendar in global variable
+            enemyHPscore    = parseInt($(this).attr("data-hpscore"));
+            enemyCurHP      = parseInt($(".enemy-fighter" + myCounter + ">#point" + myCounter).attr("value"));
+            enemyCurHPAttr  = $(".enemy-fighter" + myCounter + ">#point" + myCounter);
+            enemyCharName   = $(myChar).text().toUpperCase(); //storing the name of the defendar in global variable
             $(myChar).appendTo( $(".current-fighter1") );
             $(myImage).appendTo( $(".current-fighter1") );
             $(myPoint).appendTo( $(".current-fighter1") );   
@@ -88,7 +106,33 @@
         });
     }    
 
-    // process starts here
+    // attack fuction starts here
+    var gameAttack = function() {  
+        myCurHP     = myCurHP - enemyHPscore;
+        enemyCurHP  = enemyCurHP - myNewHP;      
+        $(myCurHPAttr).text(myCurHP);
+        $(enemyCurHPAttr).text(enemyCurHP);
+        $("#myscore").text("You attacked " + enemyCharName + " for " + myNewHP + " damage.");
+        $("#enemyscore").text(enemyCharName + " attacked you back for " + enemyHPscore + " damage.");        
+        myNewHP     = myNewHP + myHPscore; // increase my HP after the game iteration
+
+        if (enemyCurHP < 0){            
+            var myChar1 = ".current-fighter1";    
+            $(myChar1).remove();   
+            firstTime = true;
+            $("#myscore").text("");
+            $("#enemyscore").text("");       
+            $("#result").text("You have defeated " + enemyCharName + ".You can choose to fight another enemy");
+        }
+
+        if (myCurHP < 0){
+            $("#myscore").text("");
+            $("#enemyscore").text(""); 
+            $("#result").text("You lose. GAME OVER! click <Restart> to play again");
+        }
+    }
+
+    // game work flow starts here
     $(document).ready( function() {
         $(".enemy-fighter, .btn, .defender").hide(); //hiding other flexboxes & buttons at the start of the game
 
@@ -97,10 +141,8 @@
         $(".restart").on("click", function() {
             resetGame();
         });
-        $(".attack").on("click", function(){            
-            $("#myscore").text("You attacked " + myCharName + " for " + myHPscore + " damage.");
-            $("#enemyscore").text(myCharName + " attacked you back for " + enemyHPscore + " damage.");
-            $("#result").text("You are a winner/defeated .... GAME OVER!");
+        $(".attack").on("click", function(){    
+            gameAttack();
         });
     });
 
