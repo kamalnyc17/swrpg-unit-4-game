@@ -25,9 +25,9 @@
             var myCounter   = (j).toString().trim();
             myContainer = ".your-charecter" + myCounter; 
             $(".your-charecter").append("<div class='allbox ycharbox your-charecter" + myCounter + "' value='" + myCounter + "' data-HPscore='" + hpArray[j-1].toString().trim()+  "' >");
-            $(myContainer).append("<h1 id='char" + myCounter + "'>Obi-Wan Kenobi</h1>");
+            $(myContainer).append("<h6 id='char" + myCounter + "'>Obi-Wan Kenobi</h6>");
             $(myContainer).append("<img src='assets/images/star " + myCounter + ".jpg'>");
-            $(myContainer).append("<h1 id='point" + myCounter + "' value='" + valArray[j-1] + "'>" + valArray[j-1] + "</h1>");
+            $(myContainer).append("<h6 id='point" + myCounter + "' value='" + valArray[j-1] + "'>" + valArray[j-1] + "</h6>");
         }    
         
         pickSelf();
@@ -141,7 +141,7 @@
         }
     }
 
-    // game work flow starts here
+    // game work flow starts here after the whole page is loaded
     $(document).ready( function() {
         $(".enemy-fighter, .btn, .defender").hide(); //hiding other flexboxes & buttons at the start of the game
 
