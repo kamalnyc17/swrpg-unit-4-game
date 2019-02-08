@@ -76,14 +76,14 @@
     // function to select an enemy / defendar
     var pickEnemy = function() {
         $(".enemybox").on("click", function() {              
-        if (firstTime){ //user can't select multiple enemy at the same time
+        if (firstTime){ //user can't select multiple enemy at the same time or until defeat the current defendar
             // recreate the current-fighter1 object
             if (!veryFirstTime){
                 $(".defender").append("<div class='allbox fighterbox current-fighter1'>");
                 $("#result").text("");
             }
-            firstTime = false;  
-            veryFirstTime = false;
+            firstTime       = false;  
+            veryFirstTime   = false;
             $(".attack").show();
             $(".defender").show();  
             var myCounter;
