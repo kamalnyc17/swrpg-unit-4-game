@@ -41,7 +41,7 @@
             var Counter1    = 1;
             for (var i=1; i<5; i++){
 
-                if (i !== myOperator){
+                if (i !== myOperator){   // charecters that are not clicked on moved to enemies area
                     var myCounter   = (i).toString().trim();
                     var enemyCnt    = (Counter1).toString().trim();
                     var myChar      = ".your-charecter" + myCounter + ">#char" + myCounter;
@@ -60,7 +60,7 @@
                     $('#char'+myCounter).attr( 'id' , 'char'+enemyCnt );
                     $('#point'+myCounter).attr( 'id' , 'point'+enemyCnt );
                     Counter1++;
-                } else {
+                } else { // keeping the selected charecter as myself
                     var myCounter   = (i).toString().trim();
                     myCharDelete    = ".your-charecter" + myCounter;
                     myAPscore       = parseInt($(this).attr("data-hpscore"));
