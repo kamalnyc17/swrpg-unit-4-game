@@ -11,4 +11,5 @@ each subsequent attact. However, the defendar's CAP will remain constant.
 8. If the defendar's HP becomes <= 0, the user will win that round and he/she can select another defendar from the "enemies" section and continue to play
 as long as there are any enimes left.
 9. Once the user defeats all enemies, he/she wins the game and can hit "Restart" to play again.
+10. Link to deployed project: https://kamalnyc17.github.io/swrpg-unit-4-game/
 
